@@ -1,0 +1,176 @@
+/* RESET */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  height: 100vh;
+  background: url('../images/background.png') no-repeat center center / cover;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden; position: relative;
+}
+
+/* Overlay blur */
+.overlay {
+  position: absolute; inset: 0;
+  backdrop-filter: blur(6px);
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 0;
+}
+
+/* Container */
+.auth-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 420px;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(12px);
+  padding: 2.5rem;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+  transform: translateY(40px);
+  opacity: 0;
+  animation: slideIn 0.8s ease-out forwards;
+}
+
+/* Judul */
+.auth-container h2 {
+  text-align: center; margin-bottom: 1.8rem;
+  font-size: 26px; color: #222; font-weight: 600;
+}
+
+/* Alerts */
+.alert {
+  padding: .75rem .9rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  font-size: 14px;
+  line-height: 1.35;
+}
+.alert.success { background:#e8f7ee; color:#166534; border:1px solid #bbf7d0; }
+.alert.danger  { background:#fee2e2; color:#991b1b; border:1px solid #fecaca; }
+
+/* Input dengan ikon */
+.input-group { position: relative; margin-bottom: 14px; }
+.input-group .input-icon {
+  position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+  width: 20px; height: 20px; opacity: .65;
+}
+.input-group input{
+  width: 100%;
+  height: 52px;                         /* tinggi konsisten */
+  padding: 14px 46px 14px 46px;         /* ruang untuk ikon & tombol eye */
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  font-size: 15px;
+  transition: all .2s ease-in-out;
+  background:#fff; color:#222;
+}
+.input-group input:focus {
+  outline: none; border-color: #F69220;
+  box-shadow: 0 0 0 3px rgba(246,146,32,0.18);
+}
+
+/* Tombol show/hide password */
+.eye{
+  position:absolute; right:10px; top:50%; transform:translateY(-50%);
+  width:36px; height:36px; border-radius:10px;
+  border:1px solid transparent; background:#f3f4f6; cursor:pointer;
+  display:inline-flex; align-items:center; justify-content:center;
+  font-size:16px; line-height:0; color:#475569;
+}
+.eye:hover{ background:#eef2f7 }
+/* state aktif → oranye lembut */
+.eye.on{
+  background:#fff3e6; color:#b65d12; border-color:#ffd7aa;
+}
+
+/* Checkbox row */
+.check-row{ display:flex; gap:.5rem; align-items:center; margin:.5rem 0 1rem; }
+.check-row input{ width:16px; height:16px; }
+
+/* Tombol utama */
+.primary-btn, .login-btn {
+  width: 100%; padding: 13px;
+  border: none; border-radius: 12px;
+  font-size: 16px; cursor: pointer; font-weight: 700;
+  transition: transform .05s ease, box-shadow .2s ease, background .2s ease;
+  background-color: #F69220; color: #fff;
+  box-shadow: 0 4px 12px rgba(246,146,32,.25);
+}
+.primary-btn:hover, .login-btn:hover{ background-color:#dc7f17; }
+.primary-btn:active, .login-btn:active{ transform: translateY(1px); }
+
+/* Garis separator */
+.separator {
+  text-align: center; margin: 1rem 0;
+  font-size: 14px; color: #999; position: relative;
+}
+.separator::before, .separator::after {
+  content:""; position: relative; top: -0.35em;
+  display:inline-block; width: 40%;
+  height:1px; background: #e5e5e5;
+}
+.separator::before { margin-right: .6rem; }
+.separator::after  { margin-left:  .6rem; }
+
+/* Tombol Google (tetap netral sesuai pedoman brand) */
+.google-wrapper { text-align:center; }
+.google-btn {
+  background-color: #ffffff;
+  color: #444;
+  border: 1px solid #ddd;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-weight: 700;
+  padding: 14px 18px;
+  border-radius: 12px;
+  width: 100%;
+  transition: background .25s ease, box-shadow .25s ease, transform .05s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+.google-btn img { width: 22px; height: 22px; }
+.google-btn:hover {
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  transform: translateY(-1px);
+}
+.google-btn:active { transform: translateY(1px); }
+.google-btn.is-loading { opacity:.85; pointer-events:none; }
+
+/* Link register */
+.register-link {
+  text-align: center; font-size: 14px; margin-top: 1.2rem;
+}
+.register-link a {
+  color: #F69220; text-decoration: none; font-weight: 700;
+}
+.register-link a:hover { text-decoration: underline; }
+
+/* Autofill Chrome/Edge supaya seragam */
+.input-group input:-webkit-autofill,
+.input-group input:-webkit-autofill:hover,
+.input-group input:-webkit-autofill:focus{
+  -webkit-text-fill-color:#222;
+  -webkit-box-shadow: 0 0 0 1000px #fff inset;
+  box-shadow: 0 0 0 1000px #fff inset;
+  transition: background-color 9999s ease-out 0s;
+}
+
+/* Error list gaya lama (fallback) */
+.error-message {
+  color: #991b1b; background:#fee2e2; border:1px solid #fecaca;
+  border-radius: 10px; padding:.75rem .9rem; margin-bottom:1rem; font-size:14px;
+}
+
+/* Animation */
+@keyframes slideIn { to { transform: translateY(0); opacity: 1; } }
+
+/* Responsif kecil */
+@media (max-width: 440px){
+  .auth-container{ padding: 1.75rem; border-radius:16px; }
+  .input-group input{ height:50px; }
+}

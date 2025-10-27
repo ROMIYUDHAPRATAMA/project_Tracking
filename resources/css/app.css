@@ -1,0 +1,59 @@
+/* ===================================================
+   App.css (Global Styles + Tailwind Import + Overrides)
+   =================================================== */
+
+/* Tailwind import */
+@import 'tailwindcss';
+
+/* Source scanning untuk purge Tailwind */
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+/* Theme tokens */
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif,
+        'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+/* ===================================================
+   Global CSS Variables (Brand Colors)
+   =================================================== */
+:root {
+    --brand:   #F69220;   /* Warna utama brand */
+    --primary: #F69220;   /* Hero background */
+    --sidebar: #F69220;   /* Sidebar background */
+    --ink:     #0f172a;   /* Default text */
+    --muted:   #6b7280;   /* Teks sekunder */
+}
+
+html[data-theme="dark"] {
+    --brand:   #F69220;
+    --primary: #F69220;
+    --sidebar: #F69220;
+    --ink:     #e6eefb;
+    --muted:   #94a3b8;
+}
+
+/* ===================================================
+   Sidebar Override
+   =================================================== */
+.sidebar {
+    background: var(--sidebar) !important;
+    color: #fff;
+}
+
+/* Menu item default */
+.sidebar .menu-item {
+    color: #fff;
+    transition: background .15s ease;
+}
+
+/* Menu item aktif */
+.sidebar .menu-item.is-active {
+    background: rgba(255, 255, 255, .2);
+    color: #fff;
+    font-weight: 600;
+}

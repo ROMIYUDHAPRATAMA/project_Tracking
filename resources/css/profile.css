@@ -1,0 +1,198 @@
+/* ===================================================================
+   PROFILE PAGE STYLES (clean & modern)
+   File: resources/css/profile.css
+   =================================================================== */
+
+/* --------- Tokens / Variables --------- */
+:root{
+  --pf-card:    rgba(255,255,255,.96);
+  --pf-border:  rgba(15,32,54,.10);
+  --pf-muted:   #667085;
+  --pf-text:    #0f172a;
+
+  /* BRAND -> ORANGE */
+  --pf-brand:   #F69220;                          /* utama */
+  --pf-ok:      #F69220;                          /* success accent -> ikut brand */
+  --pf-bad:     #b42318;
+
+  --pf-ring:    rgba(246,146,32,.18);             /* focus ring */
+  --pf-shadow:  0 10px 28px rgba(16,24,40,.10);
+}
+
+/* Container di dalam layout */
+.pf-wrap{ margin-top: 18px; }
+
+/* Card utama */
+.pf-card{
+  position: relative;
+  background: linear-gradient(180deg, #fff 0%, #fbfdff 100%);
+  border: 1px solid var(--pf-border);
+  border-radius: 22px;
+  padding: 18px 18px 80px;      /* ruang bawah utk action bar */
+  box-shadow: var(--pf-shadow);
+}
+
+/* --------- Header Identitas (atas halaman) --------- */
+.pf-header{
+  display:flex; align-items:center; gap:14px;
+  background: #fff;
+  border:1px solid var(--pf-border);
+  border-radius:22px;
+  padding:16px 20px;
+  margin-bottom:18px;
+  box-shadow: var(--pf-shadow);
+}
+.pf-header .pf-avatar{
+  width:56px; height:56px; border-radius:50%;
+  display:grid; place-items:center;
+  font-size:20px; font-weight:800; color:#fff;
+  /* ganti gradient biru -> oranye */
+  background:linear-gradient(135deg,#b85e12,#F69220);
+  box-shadow:0 6px 16px rgba(246,146,32,.25);
+}
+.pf-header .pf-name{ font-size:20px; font-weight:800; margin:0; color:var(--pf-text) }
+.pf-header .pf-mail{ font-size:14px; color:var(--pf-muted); margin:2px 0 0 }
+
+/* Versi besar (dipakai sebagai header utama halaman) */
+.pf-head.big{ gap:16px; padding: 14px 4px 20px; margin-bottom: 18px; }
+
+.pf-avatar{
+  width:44px; height:44px; border-radius:50%;
+  display:grid; place-items:center;
+  font-weight:800; color:#fff;
+  /* ganti gradient biru -> oranye */
+  background: linear-gradient(135deg, #b85e12, #F69220);
+  box-shadow: 0 6px 16px rgba(246,146,32,.25);
+}
+.pf-head.big .pf-avatar{ width:56px; height:56px; font-size:20px; }
+
+.pf-id .pf-name{
+  margin:0;
+  font-size:18px; font-weight:800; color:var(--pf-text);
+}
+.pf-id .pf-mail{
+  margin:2px 0 0;
+  font-size:13px; color:var(--pf-muted);
+}
+.pf-head.big .pf-name{ font-size:20px; }
+.pf-head.big .pf-mail{ font-size:14px; }
+
+/* --------- Form Grid --------- */
+.pf-form{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:22px;
+  margin-top:10px;
+}
+.pf-col{ display:flex; flex-direction:column; gap:14px; }
+
+.pf-section-title{
+  font-size: 15px; font-weight: 800; color: var(--pf-text);
+  display:flex; align-items:center; gap:8px; margin-bottom: 6px;
+}
+.pf-badge{
+  font-size: 11px; font-weight: 700; color:#0f5132; background:#e7f5ee;
+  border:1px solid #badbcc; padding:2px 8px; border-radius:999px;
+}
+
+/* --------- Field & Inputs --------- */
+.pf-field{ display:flex; flex-direction:column; gap:8px; }
+.pf-field label{ font-size: 13px; color: var(--pf-muted); }
+.pf-field .req{ color:#ef4444; }
+
+.pf-input{
+  position: relative;
+  display:flex; align-items:center; gap:10px;
+  border:1px solid rgba(15,32,54,.16);
+  border-radius: 14px;
+  padding: 12px 14px 12px 46px; /* ruang untuk icon kiri */
+  background:#fff;
+  transition: border-color .15s ease, box-shadow .15s ease, transform .05s ease;
+}
+.pf-input:focus-within{
+  /* ganti aksen biru -> oranye */
+  border-color: rgba(246,146,32,.55);
+  box-shadow: 0 0 0 5px var(--pf-ring);
+}
+.pf-input:active{ transform: translateY(1px); }
+
+.pf-input input{
+  flex:1; border:0; outline:0; background:transparent;
+  font-size: 14px; color: var(--pf-text);
+}
+
+.pf-icon{
+  position:absolute; left:14px; width:18px; height:18px; opacity:.75;
+  filter: grayscale(.1);
+}
+
+/* Grid kecil 2 kolom (password) */
+.pf-grid-2{ display:grid; grid-template-columns: 1fr 1fr; gap:14px; }
+
+/* Divider dekoratif (opsional) */
+.pf-divider{
+  grid-column: 1 / -1;
+  height:1px; margin-top:6px;
+  background: linear-gradient(90deg, transparent, rgba(15,32,54,.15), transparent);
+}
+
+/* --------- Validasi & Alerts --------- */
+.pf-help.error{
+  margin-top:4px;
+  color:#842029; background:#fdeceb; border:1px solid #f5c2c7;
+  padding:6px 10px; border-radius:10px; font-size:12px;
+}
+
+.pf-alert{
+  display:flex; align-items:flex-start; gap:10px;
+  padding:12px 14px; border-radius:12px; margin:12px 0;
+  border:1px solid transparent; font-size:14px;
+}
+.pf-alert ul{ margin:6px 0 0 18px; }
+.pf-alert-dot{ width:8px; height:8px; border-radius:999px; margin-top:6px; flex:0 0 auto; }
+
+/* success sebelumnya bernuansa biru → ubah ke oranye lembut */
+.pf-alert.success{
+  background:#FFF3E6;          /* oranye sangat muda */
+  border-color:#FFE0BF;        /* border oranye muda */
+  color:var(--pf-ok);
+}
+.pf-alert.success .pf-alert-dot{ background:var(--pf-ok); }
+
+.pf-alert.danger{
+  background:#fdeceb; border-color:#f5c2c7; color:#842029;
+}
+.pf-alert.danger .pf-alert-dot{ background:var(--pf-bad); }
+
+/* --------- Action Bar (floating) --------- */
+.pf-actions{
+  position:absolute; right:18px; bottom:18px;
+  display:flex; gap:10px;
+}
+.pf-btn{
+  background: var(--pf-brand); color:#fff; border:0;
+  padding: 10px 18px; border-radius: 12px; font-weight: 700;
+  cursor:pointer;
+  transition: transform .05s ease, filter .15s ease, box-shadow .15s ease;
+  box-shadow: 0 10px 24px rgba(246,146,32,.25);
+}
+.pf-btn:hover{ filter: brightness(.96); }
+.pf-btn:active{ transform: translateY(1px); }
+
+/* --------- Aksesibilitas kecil --------- */
+@media (prefers-reduced-motion: reduce){
+  .pf-input,
+  .pf-btn{ transition: none; }
+}
+
+/* --------- Responsive --------- */
+@media (max-width: 1200px){
+  .pf-form{ grid-template-columns: 1fr; }
+  .pf-actions{ position: static; margin-top: 10px; }
+}
+
+@media (max-width: 640px){
+  .pf-grid-2{ grid-template-columns: 1fr; }
+  .pf-card{ padding-bottom: 20px; }
+}
+ 

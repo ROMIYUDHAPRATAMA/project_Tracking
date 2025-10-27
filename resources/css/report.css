@@ -1,0 +1,134 @@
+/* ====================== REPORT – POLISHED ====================== */
+:root{
+  --brand:#F69220;
+  --brand-2:#ffb05a;      /* tint */
+  --ink:#0b1727;
+  --muted:#6b7280;
+  --ring:rgba(15,23,42,.08);
+  --elev-1:0 6px 20px rgba(15,23,42,.06);
+  --elev-2:0 12px 32px rgba(15,23,42,.10);
+  --radius:14px;
+}
+
+.report-page > * + *{ margin-top:22px }
+
+/* ---------- Hero ---------- */
+.report-hero{
+  display:flex; justify-content:space-between; align-items:center; gap:16px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.9)) padding-box,
+    radial-gradient(120% 100% at 0% 0%, rgba(246,146,32,.18), transparent 60%) border-box;
+  border:1px solid var(--ring); border-radius:calc(var(--radius) + 8px);
+  padding:22px; box-shadow:var(--elev-1); position:relative; overflow:hidden;
+}
+.report-hero::after{
+  content:""; position:absolute; right:-60px; top:-60px; width:220px; height:220px;
+  background:radial-gradient(closest-side, rgba(246,146,32,.15), transparent 60%);
+  filter:blur(6px); pointer-events:none;
+}
+.report-hero .title{ margin:0 0 6px 0 }
+.report-hero .subtitle{ margin:0; color:var(--muted) }
+
+/* ---------- Filters ---------- */
+.filters{
+  display:grid; grid-template-columns:repeat(5,auto); gap:10px; align-items:end
+}
+.filters label{ display:flex; flex-direction:column; font-size:12px; color:var(--muted) }
+.filters .i{
+  height:38px; padding:0 12px; border:1px solid var(--ring); border-radius:12px; background:#fff;
+  transition:border-color .2s, box-shadow .2s;
+}
+.filters .i:focus{
+  outline:none; border-color:rgba(246,146,32,.45);
+  box-shadow:0 0 0 4px rgba(246,146,32,.12);
+}
+
+/* ---------- Buttons ---------- */
+.btn{
+  height:38px; padding:0 16px; border-radius:12px; border:1px solid var(--ring);
+  background:#fff; cursor:pointer; font-weight:700;
+  transition:transform .06s, box-shadow .2s, filter .2s, background .2s;
+}
+.btn:hover{ box-shadow:0 8px 24px rgba(15,23,42,.12) }
+.btn:active{ transform:translateY(1px) }
+.btn-brand{ background:var(--brand); color:#fff; border-color:transparent; filter:saturate(1.05) }
+.btn-ghost{ background:#fff }
+.btn-ghost:hover{ background:#fafafa }
+
+/* ---------- KPI ---------- */
+.kpi-grid{ display:grid; grid-template-columns:repeat(5,1fr); gap:16px }
+.kpi{
+  position:relative; background:#fff; border:1px solid var(--ring);
+  border-radius:calc(var(--radius) + 6px); padding:16px; box-shadow:var(--elev-1); overflow:hidden;
+}
+.kpi .label{ color:var(--muted); margin-bottom:6px }
+.kpi .value{ font-size:30px; font-weight:800; letter-spacing:.2px }
+.kpi::after{
+  content:""; position:absolute; right:-40px; bottom:-40px; width:180px; height:180px;
+  background:radial-gradient(closest-side, rgba(246,146,32,.14), transparent);
+  filter:blur(10px);
+}
+
+/* ---------- Charts ---------- */
+.charts{ display:grid; grid-template-columns:2.2fr 1fr; gap:16px }
+.chart{ min-height:260px }
+.chart-title{ margin:0 0 10px 0; color:#334155 }
+
+/* Card feel untuk canvas (tanpa atur tinggi) */
+.charts.card{ padding:18px }
+.charts canvas{
+  background:#fff; border:1px solid var(--ring);
+  border-radius:14px; box-shadow:var(--elev-1);
+}
+
+/* ---------- Table ---------- */
+.table-wrap{ overflow:auto }
+.table{
+  width:100%; border-collapse:separate; border-spacing:0; border-radius:14px; overflow:hidden;
+}
+.table thead th{
+  position:sticky; top:0; z-index:1;
+  background:linear-gradient(180deg, #fff, #fafafa); color:#475569;
+  font-weight:800; letter-spacing:.2px;
+  border-bottom:1px solid var(--ring);
+}
+.table th,.table td{ padding:12px 14px; text-align:left }
+.table tbody tr:nth-child(odd){ background:#fff }
+.table tbody tr:nth-child(even){ background:#fcfcfc }
+.table tbody tr:hover{ background:#f9fafb }
+.table tbody td{ border-bottom:1px solid var(--ring) }
+.link-project{ color:var(--ink); text-decoration:none; font-weight:600 }
+.link-project:hover{ text-decoration:underline }
+
+/* ---------- Utilities ---------- */
+.card{
+  background:#fff; border:1px solid var(--ring);
+  border-radius:calc(var(--radius) + 4px); box-shadow:var(--elev-1)
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width:1280px){
+  .kpi-grid{ grid-template-columns:repeat(3,1fr) }
+  .charts{ grid-template-columns:1.5fr 1fr }
+}
+@media (max-width:1100px){
+  .filters{ grid-template-columns:1fr 1fr auto auto; }
+  .charts{ grid-template-columns:1fr }
+}
+@media (max-width:720px){
+  .kpi-grid{ grid-template-columns:1fr 1fr }
+  .filters{ grid-template-columns:1fr; align-items:stretch }
+  .filters .btn, .filters .btn-ghost, .filters .btn-brand{ width:100% }
+}
+
+/* ---------- Dark Mode ---------- */
+html[data-theme="dark"] .report-hero,
+html[data-theme="dark"] .card,
+html[data-theme="dark"] .charts canvas{
+  background:rgba(15,23,42,.55);
+  border-color:rgba(255,255,255,.08);
+}
+html[data-theme="dark"] .table thead th{ background:rgba(15,23,42,.65); color:#e5e7eb }
+html[data-theme="dark"] .table tbody tr:nth-child(odd){ background:rgba(255,255,255,.03) }
+html[data-theme="dark"] .table tbody tr:nth-child(even){ background:rgba(255,255,255,.02) }
+html[data-theme="dark"] .filters .i{ background:rgba(255,255,255,.06); color:#e5e7eb; border-color:rgba(255,255,255,.08) }

@@ -1,0 +1,258 @@
+/* =========================================================
+   SDLC STYLE SHEET
+   Digunakan untuk halaman SDLC per fase:
+   Planning, Design, Implementasi, Testing, Deployment, Maintenance
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   GLOBAL STRUCTURE
+--------------------------------------------------------- */
+.sdlc-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sdlc-page .stack {
+  display: grid;
+  gap: 14px;
+}
+
+.sdlc-page .bullets {
+  margin: 8px 0 0;
+  padding-left: 18px;
+}
+.sdlc-page .bullets li {
+  margin: 4px 0;
+}
+
+.checklist {
+  list-style: none;
+  padding-left: 0;
+}
+.checklist li {
+  padding: 8px 10px;
+  border: 1px solid var(--ring, #e6e8ee);
+  border-radius: 10px;
+  margin: 6px 0;
+  background: var(--card, #fff);
+  display: flex;
+  align-items: center;
+}
+.checklist input {
+  transform: translateY(1px);
+  margin-right: 8px;
+  width: 18px;
+  height: 18px;
+}
+
+.stepper {
+  margin-bottom: 20px;
+}
+.stepper .steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.stepper .step a {
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: #f5f7fb;
+  color: #334155;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background .2s, color .2s;
+}
+.stepper .step.active a {
+  background: #F69220;
+  color: #fff;
+}
+.stepper .step a:hover {
+  background: #ffe5c1;
+  color: #000;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table th,
+.table td {
+  border-bottom: 1px solid var(--ring, #e6e8ee);
+  padding: 10px 12px;
+  text-align: left;
+}
+.table tr:last-child th,
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+.card {
+  background: var(--card, #fff);
+  border: 1px solid var(--ring, #e6e8ee);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background .2s, border-color .2s;
+}
+.btn-brand {
+  background: #F69220;
+  color: #fff;
+  border-color: #F69220;
+}
+.btn-ghost {
+  background: transparent;
+  border-color: #e6e8ee;
+  color: #334155;
+}
+.btn-ghost:hover {
+  background: #fff7ed;
+}
+.btn.sm {
+  height: 30px;
+  padding: 0 10px;
+  font-size: 13px;
+}
+
+/* =========================================================
+   // ------- PLANNING -------- //
+   Tujuan, ruang lingkup, stakeholder, risiko, checklist
+========================================================= */
+.planning .card-title {
+  color: #0f213a;
+  font-weight: 700;
+}
+.planning .bullets li::marker {
+  color: #F69220;
+}
+.planning .checklist li:hover {
+  background: #fff7ed;
+}
+
+/* =========================================================
+   // ------- ANALYS -------- //
+   Analisis kebutuhan, flowchart, diagram use-case
+========================================================= */
+.analys .card-title {
+  color: #854d0e;
+  font-weight: 700;
+}
+.analys .bullets li::marker {
+  color: #facc15;
+}
+.analys .checklist li:hover {
+  background: #fef9c3;
+}
+
+/* =========================================================
+   // ------- DESIGN -------- //
+   Wireframe, mockup, arsitektur sistem
+========================================================= */
+.design .card-title {
+  color: #075985;
+  font-weight: 700;
+}
+.design .bullets li::marker {
+  color: #0ea5e9;
+}
+.design .checklist li:hover {
+  background: #e0f2fe;
+}
+
+/* =========================================================
+   // ------- IMPLEMENTASI -------- //
+   Coding, integrasi API, database, backend, frontend
+========================================================= */
+.implementasi .card-title {
+  color: #166534;
+  font-weight: 700;
+}
+.implementasi .bullets li::marker {
+  color: #22c55e;
+}
+.implementasi .checklist li:hover {
+  background: #dcfce7;
+}
+
+/* =========================================================
+   // ------- TESTING -------- //
+   Unit test, UAT, bug fixing
+========================================================= */
+.testing .card-title {
+  color: #7c2d12;
+  font-weight: 700;
+}
+.testing .bullets li::marker {
+  color: #f97316;
+}
+.testing .checklist li:hover {
+  background: #fff7ed;
+}
+
+/* =========================================================
+   // ------- DEPLOYMENT -------- //
+   Server, domain, versi release
+========================================================= */
+.deployment .card-title {
+  color: #1e3a8a;
+  font-weight: 700;
+}
+.deployment .bullets li::marker {
+  color: #3b82f6;
+}
+.deployment .checklist li:hover {
+  background: #eff6ff;
+}
+
+/* =========================================================
+   // ------- MAINTENANCE -------- //
+   Update fitur, monitoring, feedback user
+========================================================= */
+.maintenance .card-title {
+  color: #581c87;
+  font-weight: 700;
+}
+.maintenance .bullets li::marker {
+  color: #a855f7;
+}
+.maintenance .checklist li:hover {
+  background: #faf5ff;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+@media (max-width: 960px) {
+  .sdlc-page {
+    gap: 14px;
+  }
+  .stepper .steps {
+    flex-wrap: wrap;
+  }
+  .btn {
+    height: 34px;
+    font-size: 13px;
+  }
+}
